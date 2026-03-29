@@ -20,7 +20,7 @@ function generateCode() {
 }
 
 function parseBrackets(text) {
-  const match = text.match(/^(.*?)\[(.+?)\](.*)$/);
+  const match = text.match(/^(.*?)\/(.+?)\/(.*)$/);
   if (!match) return { before: text, answer: "", after: "", hasBracket: false };
   return { before: match[1], answer: match[2], after: match[3], hasBracket: true };
 }
@@ -30,18 +30,18 @@ function parseRawPairs(rawPairs) {
 }
 
 const DEFAULT_PAIRS = [
-  { a: "Je [mange] trois repas par jour.", b: "我每天[吃]三顿饭。" },
-  { a: "Le [matin], je prends un petit déjeuner avec du pain et du lait.", b: "在[早上]，我吃早餐，有面包和牛奶。" },
-  { a: "À midi, je mange des [fruits] et des légumes.", b: "[中午]，我吃水果和蔬菜。" },
-  { a: "C'est important pour la [santé].", b: "这对[健康]很重要。" },
-  { a: "Le [soir], je mange léger.", b: "晚上，我吃得很[清淡]。" },
-  { a: "Par exemple, je prends une [soupe] ou un peu de salade.", b: "比如，我喝[汤]或者吃一点沙拉。" },
-  { a: "Je [bois] beaucoup d'eau tous les jours.", b: "我每天喝很多[水]。" },
-  { a: "Manger des fruits et des [légumes] est très bon pour le corps.", b: "吃水果和蔬菜对[身体]非常好。" },
-  { a: "Une alimentation [équilibrée] est importante pour vivre bien.", b: "[均衡]的饮食对于生活很重要。" },
-  { a: "Le [ciel] est bleu aujourd'hui.", b: "今天[天空]是蓝色的。" },
-  { a: "Elle [habite] dans une grande maison.", b: "她住在一个大[房子]里。" },
-  { a: "Les enfants [jouent] dans le jardin.", b: "孩子们在[花园]里玩。" },
+  { a: "Je /mange/ trois repas par jour.", b: "我每天/吃/三顿饭。" },
+  { a: "Le /matin/, je prends un petit déjeuner avec du pain et du lait.", b: "在/早上/，我吃早餐，有面包和牛奶。" },
+  { a: "À midi, je mange des /fruits/ et des légumes.", b: "/中午/，我吃水果和蔬菜。" },
+  { a: "C'est important pour la /santé/.", b: "这对/健康/很重要。" },
+  { a: "Le /soir/, je mange léger.", b: "晚上，我吃得很/清淡/。" },
+  { a: "Par exemple, je prends une /soupe/ ou un peu de salade.", b: "比如，我喝/汤/或者吃一点沙拉。" },
+  { a: "Je /bois/ beaucoup d'eau tous les jours.", b: "我每天喝很多/水/。" },
+  { a: "Manger des fruits et des /légumes/ est très bon pour le corps.", b: "吃水果和蔬菜对/身体/非常好。" },
+  { a: "Une alimentation /équilibrée/ est importante pour vivre bien.", b: "/均衡/的饮食对于生活很重要。" },
+  { a: "Le /ciel/ est bleu aujourd'hui.", b: "今天/天空/是蓝色的。" },
+  { a: "Elle /habite/ dans une grande maison.", b: "她住在一个大/房子/里。" },
+  { a: "Les enfants /jouent/ dans le jardin.", b: "孩子们在/花园/里玩。" },
 ];
 
 io.on("connection", (socket) => {
